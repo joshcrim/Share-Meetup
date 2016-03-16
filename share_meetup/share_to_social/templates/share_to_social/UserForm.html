@@ -1,0 +1,15 @@
+<div>
+	<head>
+		<title>Share Meetup</title>
+		<link rel="stylesheet" href="style/grid.css">
+		<link rel="stylesheet" href="style/normalize.css">
+		<link rel="stylesheet" href="style/style.css">
+	</head>
+	<body>
+		<form action="/user_form" method="post">
+			{% csrf_token %}
+    		{{ form }}
+    		<input type="submit" value="Submit" />
+		</form>
+	</body>
+</div>

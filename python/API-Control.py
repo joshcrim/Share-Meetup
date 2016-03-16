@@ -22,7 +22,6 @@ def getMeetupEvents():
 		event = group_name +" - " + event_name + ", " + event_time_UTC + " " + web_link
 
 		print(event)
-		return event
 
 
 
@@ -42,3 +41,5 @@ def postToFacebook(post_content):
 
 postToTwitter(getMeetupEvents())
 
+
+#getMeetupEvents()

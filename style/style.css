@@ -1,0 +1,16 @@
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	height: 100%;
+	background-color: #cccccc;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.PostToTwitterButton {
+	height: 20%;
+	background-color: red;
+	border-radius: 2%;
+}
