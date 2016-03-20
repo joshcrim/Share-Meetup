@@ -1,15 +1,18 @@
-<div>
+<html>
 	<head>
 		<title>Share Meetup</title>
-		<link rel="stylesheet" href="style/grid.css">
-		<link rel="stylesheet" href="style/normalize.css">
-		<link rel="stylesheet" href="style/style.css">
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static  'css/grid.css' %}">
+		<link rel="stylesheet" href="{% static  'css/normalize.css' %}">
+		<link rel="stylesheet" href= "{% static  'css/style.css' %}">
 	</head>
 	<body>
-		<form action="/user_form" method="post">
-			{% csrf_token %}
-    		{{ form }}
-    		<input type="submit" value="Submit" />
-		</form>
+		<div class="form-container ">
+			<form class="create-user col-3" action="/user_form/" method="post">
+				{% csrf_token %}
+	    		{{ form }}
+	    		<input type="submit" value="Submit" />
+			</form>
+		</div>
 	</body>
-</div>
+</html>

@@ -1,0 +1,12 @@
+<head>
+	<title>Share Meetup</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static  'css/grid.css' %}">
+	<link rel="stylesheet" href="{% static  'css/normalize.css' %}">
+	<link rel="stylesheet" href= "{% static 'css/style.css' %}">
+</head>
+<body>
+	<div class="container">
+		<a class='login-button col-4' href="{% url 'create_account' %}">Log In!</a>
+	</div>
+</body>

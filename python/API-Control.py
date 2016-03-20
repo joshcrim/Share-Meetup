@@ -34,10 +34,12 @@ def postToTwitter(post_content):
 
 	twitter.update_status(status=post_content)
 
-
+#In Progress-------------------------------------#
 def postToFacebook(post_content):
 	facebook_app_key
 	facebook_app_secret
+#------------------------------------------------#
+
 
 postToTwitter(getMeetupEvents())
 
