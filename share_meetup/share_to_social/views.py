@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
+from django.contrib.auth.decorators import login_required
 from .forms import UserForm
 
 # Create your views here.
@@ -17,9 +18,9 @@ def create_account(request):
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
-            # ...
+            form.save()
             # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
+            return HttpResponseRedirect('/login')
 
         # if a GET (or any other method) we'll create a blank form
     else:
@@ -27,6 +28,10 @@ def create_account(request):
 
         return render(request, 'UserForm.html', {'form': form})
 
+@login_required(redirect_field_name='share', login_url='/login')
+def share(request):
+    template = loader.get_template('share.html')
+    return HttpResponse(template.render())
 
 
 
