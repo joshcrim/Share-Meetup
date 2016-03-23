@@ -8,11 +8,12 @@ from api_keys import *
 
 def getMeetupEvents():
 
-	r = requests.get('https://api.meetup.com/self/events?fields=short_link&key=' + meetup_api_key)
+	request_events = requests.get('https://api.meetup.com/self/events?fields=short_link&key=' + meetup_api_key)
 
-	rw = json.loads(r.text)
+	events = json.loads(request_events.text)
 
-	for items in rw:
+	for items in events:
+		event_id = items['id']
 		group_name = items['group']['name']
 		event_name = items['name']
 		web_link = items['short_link']

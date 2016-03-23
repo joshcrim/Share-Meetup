@@ -19,6 +19,6 @@ from django.conf import settings
 from django.contrib import admin
 
 urlpatterns = [
-	url(r'^', include('share_to_social.urls')),
+	url(r'^home/', include('share_to_social.urls')),
     url(r'^admin/', admin.site.urls)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)

@@ -1,4 +1,4 @@
-<head>
+<!-- <head>
 	<title>Share Meetup</title>
 	{% load staticfiles %}
 	<link rel="stylesheet" href="{% static  'css/grid.css' %}">
@@ -10,4 +10,56 @@
 		<a class='login-button col-4' href="{% url 'login' %}">Log In!</a>
 		<a class='login-button col-4' href="{% url 'create_account' %}">Create Account</a>
 	</div>
+</body> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Share Meetup</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+	<nav>
+		<div class="nav-wrapper teal">
+			<a href="#!" class="brand-logo center" >Share Meetup!</a>
+			<ul class="right hide-on-med-and-down">
+<!--		        <li><a href="{% url 'login' %}">Log In</a></li>
+		        <li><a href="{% url 'create_account' %}">Create Account</a></li>
+		    <li><a href="#!">JavaScript</a></li> -->
+	      	</ul> 										
+		</div>
+	</nav>
+	
+	<main class="container">
+		<div class="row">
+			<div class="import-button">
+				<a href="#!" class="btn">Import Meetup Events</a>
+			</div>
+
+			<div class="">
+				{% for items in events %}
+					<div class="card">
+						<div class="card-content">
+							<span class="card-title">{{ items.group.name }}</span>
+							<p>{{ items.name }}</p>
+						</div>
+						<div class="card-action">
+							<a class="twitter-post" href="#!">Post To Twitter</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			
+		
+		</div>
+	</main>
+
+	<script type="text/javascript" src="{% static 'js/jquery-2.2.2.js' %}" ></script>
+	<script type="text/javascript" src="{% static 'js/materialize.min.js' %}" ></script>
+
 </body>
+</html>
