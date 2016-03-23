@@ -1,6 +1,9 @@
 # API Key Files
 api_keys.py
 
+#Django Settings
+settings.py
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
