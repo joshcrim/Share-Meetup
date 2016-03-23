@@ -17,12 +17,18 @@ def home(request):
 
     user= User.objects.get(username="josh")
 
-    request_events  = requests.get('https://api.meetup.com/self/events?fields=short_link&key=' + meetup_api_key)
+    request_events  = requests.get('https://api.meetup.com/self/events?fields=short_link,group_photo&key=' + meetup_api_key)
 
     events = json.loads(request_events.text)
 
     template = loader.get_template('index.html')
     return HttpResponse(template.render({'events': events}))
+
+
+def share(request):
+    template= loader.get_template('share.html')
+    return HttpResponse(template.render())
+
 
 def create_account(request):
     # if this is a POST request we need to process the form data
@@ -41,10 +47,6 @@ def create_account(request):
         form= UserForm()
 
         return render(request, 'UserForm.html', {'form': form})
-
-def share(request):
-    template= loader.get_template('share.html')
-    return HttpResponse(template.render())
 
 def twitter_connect(request):
     twitter_app_key= settings.TWITTER_APP_KEY

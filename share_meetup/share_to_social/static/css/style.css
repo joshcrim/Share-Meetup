@@ -7,5 +7,9 @@ body {
 }
 
 .twitter-post {
-	color: #e57373;
+	color: #e67373;
+}
+
+.pad {
+	padding: 2% !important;
 }
