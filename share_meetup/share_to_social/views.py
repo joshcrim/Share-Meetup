@@ -1,6 +1,5 @@
 from django.conf import settings
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
 from django.contrib.auth.models import User
@@ -13,14 +12,24 @@ import datetime
 
 # Create your views here.
 def home(request):
+    #Get Meetup Event Info and load into JSON variable
     meetup_api_key= settings.MEETUP_API_KEY
-
     user= User.objects.get(username="josh")
-
     request_events  = requests.get('https://api.meetup.com/self/events?fields=short_link,group_photo&key=' + meetup_api_key)
-
     events = json.loads(request_events.text)
 
+    for items in events:
+        event_time_epoch = items['time']
+        event_time_UTC = datetime.datetime.fromtimestamp(event_time_epoch / 1000).strftime('%m-%d-%Y %H:%M')
+
+        meetup_data = Meetup_Event(user=user, event_id=items['id'], group_name=items['group']['name'], event_name=items['name'], web_link=items['short_link'], event_time=event_time_UTC)
+
+        if Meetup_Event.objects.filter(event_id=items['id']).exists():
+            pass
+        else:
+            meetup_data.save()
+
+    #Load HTML template with JSON data
     template = loader.get_template('index.html')
     return HttpResponse(template.render({'events': events}))
 

@@ -2,6 +2,7 @@ from django.db import models
 from .forms import UserForm
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.contrib import admin
 
 # Create your models here.
 
@@ -14,8 +15,11 @@ class Meetup_Event(models.Model):
 	web_link = models.CharField(max_length=200)
 	event_time = models.CharField(max_length=200)
 
-	def __str__(self):
+	def __unicode__(self):
 		return self.event_name
+
+class Meetup_Event_Admin(admin.ModelAdmin):
+	list_display = ('group_name', 'event_name', 'event_time')
 
 class Twitter_Profile(models.Model):
 	def __unicode__(self):
