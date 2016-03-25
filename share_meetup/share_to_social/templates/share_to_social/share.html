@@ -1,12 +1,22 @@
-	<head>
-		<title>Share Meetup</title>
-		{% load staticfiles %}
-		<link rel="stylesheet" href="{% static  'css/grid.css' %}">
-		<link rel="stylesheet" href="{% static  'css/normalize.css' %}">
-		<link rel="stylesheet" href= "{% static 'css/style.css' %}">
-	</head>
-	<body>
-		<div class="container col-12">
-			<a class='postToTwitter-button col-4' href="#">Share Meetup to Twitter!</a>
+{% extends 'base.html' %}
+
+{% block main %}
+
+	<div class="container col-12"><div class="">
+		{% for items in meetup_content %}
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">{{ items.group_name }}</span>
+					<img class="right" src="{{items.thumb_link}}" alt="">
+					<p>{{ items.event_name }}<br><br><a href="{{ items.web_link }}">Event Details</a></p>
+				</div>
+				<div class="card-action">
+					<a href="{% url 'share' items.event_id %}"><span class="twitter-post">Post To Twitter</span></a>
+				</div>
+			</div>
+		{% endfor %}
 		</div>
-	</body>
+		<a class='postToTwitter-button col-4' href="#">Share Meetup to Twitter!</a>
+	</div>
+		
+{% endblock %}

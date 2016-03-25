@@ -1,14 +1,17 @@
 <html>
-<head>
-	<title>Share Meetup</title>
-	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static  'css/grid.css' %}">
-	<link rel="stylesheet" href="{% static  'css/normalize.css' %}">
-	<link rel="stylesheet" href= "{% static 'css/style.css' %}">
-</head>
-<body>
-<div id="content">
-	{% block content %}{% endblock %}
-</div>
-</body>
+	<head>
+		<title>Share Meetup</title>
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
+		<link rel="stylesheet" href= "{% static  'css/style.css' %}">
+	</head>
+	
+	<body>
+
+		{% block main %}{% endblock %}
+
+		<script type="text/javascript" src="{% static 'js/jquery-2.2.2.js' %}" ></script>
+		<script type="text/javascript" src="{% static 'js/materialize.min.js' %}" ></script>
+
+	</body>
 </html>

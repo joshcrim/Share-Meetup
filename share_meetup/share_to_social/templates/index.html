@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Share Meetup</title>
-	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
 
+{% block main %}
 	<nav>
 		<div class="nav-wrapper teal">
-			<a href="#!" class="brand-logo center" >Share Meetup!</a>
+			<a href="#!" class="brand-logo center" >Share Meetups!</a>
 			<ul class="right hide-on-med-and-down">
+
 <!--		        <li><a href="{% url 'login' %}">Log In</a></li>
 		        <li><a href="{% url 'create_account' %}">Create Account</a></li>
 		    <li><a href="#!">JavaScript</a></li> -->
@@ -26,15 +20,15 @@
 			</div>
 
 			<div class="">
-				{% for items in events %}
+				{% for items in meetup_data %}
 					<div class="card">
 						<div class="card-content">
-							<span class="card-title">{{ items.group.name }}</span>
-							<img class="right" src="{{items.group.photo.thumb_link}}" alt="">
-							<p>{{ items.name }}<br><br><a href="{{ items.short_link }}">Event Details</a></p>
+							<span class="card-title">{{ items.group_name }}</span>
+							<img class="right" src="{{items.thumb_link}}" alt="">
+							<p>{{ items.event_name }}<br><br><a href="{{ items.web_link }}">Event Details</a></p>
 						</div>
 						<div class="card-action">
-							<a href="{% url 'share' %}"><span class="twitter-post">Post To Twitter</span></a>
+							<a href="{% url 'share' items.event_id %}"><span class="twitter-post">Post To Twitter</span></a>
 						</div>
 					</div>
 				{% endfor %}
@@ -42,8 +36,5 @@
 		</div>
 	</main>
 
-	<script type="text/javascript" src="{% static 'js/jquery-2.2.2.js' %}" ></script>
-	<script type="text/javascript" src="{% static 'js/materialize.min.js' %}" ></script>
+{% endblock %}
 
-</body>
-</html>

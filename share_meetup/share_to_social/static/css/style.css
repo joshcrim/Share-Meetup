@@ -1,15 +1,24 @@
 body {
-	background-color: #e57373 !important;
-}
+	background-color: #e57373 !important; }
 
 .import-button {
-	padding-top: 1%;
-}
+	padding-top: 1%; }
 
 .twitter-post {
-	color: #e67373;
-}
+	color: #e67373; }
 
 .pad {
-	padding: 2% !important;
-}
+	padding: 2% !important; }
+
+.create_account {
+	padding: 15%;
+	width: 20%; }
+
+.create_account input {
+	float: right; }
+
+.create_account label {
+	float: left; }
+
+.helptext {
+	display: none; }
