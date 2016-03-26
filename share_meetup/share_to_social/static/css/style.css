@@ -10,15 +10,31 @@ body {
 .pad {
 	padding: 2% !important; }
 
-.create_account {
-	padding: 15%;
-	width: 20%; }
-
-.create_account input {
-	float: right; }
-
-.create_account label {
-	float: left; }
-
 .helptext {
 	display: none; }
+
+.account-buttons {
+	padding-top: 5%;
+}
+
+.form-container {
+	margin-top: 3%;
+	padding: 3%;
+	padding-bottom: 5%;
+	background-color: #669688;
+}
+
+.input-field input {
+     color: white;
+   }
+.input-field label {
+     color: white;
+   }
+
+.input-field input[type=text]:focus + label {
+ color: white;
+}
+
+.input-field input[type=password]:focus + label {
+ color: white;
+}

@@ -2,12 +2,14 @@
 
 {% block main %}
 
-	<div class="form-container ">
-		<form class="create_account col-3" action="/create_account/" method="post">
-			{% csrf_token %}
-    		{{ form }}
-    		<input type="submit" value="Submit" />
-		</form>
+	<div class="container ">
+		<div class="form-container z-depth-3">
+			<form class="create_account col-3" action="/create_account/" method="post">
+				{% csrf_token %}
+	    		{{ form }}
+	    		<input class="btn right" type="submit" value="Submit" />
+			</form>
+		</div>
 	</div>
 
 {% endblock %}
