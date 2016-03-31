@@ -4,9 +4,13 @@
 
 	<div class="container ">
 		<div class="form-container z-depth-3">
-			<form class="create_account col-3" action="/create_account/" method="post">
-				{% csrf_token %}
-	    		{{ form }}
+			<form class="create_account col-3" action="/accounts/create_account/" method="post">
+			{% for field in userform %}
+				<div class="input-field">
+					{{ field }}
+					{{ field.label_tag|cut:":" }}
+			    </div>	    
+			{% endfor %}		
 	    		<input class="btn right" type="submit" value="Submit" />
 			</form>
 		</div>

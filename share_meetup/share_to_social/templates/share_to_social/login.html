@@ -6,22 +6,24 @@
 	<p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
-	<div class="container">
-			<div class="form-container z-depth-3">
-				<form class="login" action='/index/auth_view/' method="POST">
-				{% csrf_token %}
-					<div class="input-field">
-						<input name='username' type='text' class='validate'>
-					    <label for="username">Username</label>
-				    </div>
-				    <div class="input-field">
-						<input name='password' type='password' class='validate'>
-					    <label for="password">Password</label>
-				    </div> 
-					
-				    <input class="btn right" type="submit" value="login" />
-				</form>
-		    </div>	
-	</div>
-	
+<div class="container">
+  <div class="form-container z-depth-3">
+
+<!-- Creates a form for User Login that submits a POST request back to this page which,
+upon successful login, redirects the POST data to the user's homepage(/home/%username%/) -->
+	<form class="login" action='/accounts/login/' method="post">
+	  <div class="input-field">
+		<input name='username' type='text' class='validate'>
+	    <label for="username">Username</label>
+      </div>
+      <div class="input-field">
+		<input name='password' type='password' class='validate'>
+	    <label for="password">Password</label>
+      </div>
+      <input class="btn right" type="submit" value="Submit" />
+	</form>
+
+  </div>
+</div>
+
 {% endblock %}

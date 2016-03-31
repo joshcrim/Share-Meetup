@@ -24,3 +24,5 @@ def getMeetupEvents():
 		<form class='col 12' method="post" action="{% url 'django.contrib.auth.views.login' %}">
 
 		login, {'template_name': 'share_to_social/login.html'},
+
+		post_content = meetup_data.group_name + " - " + meetup_data.event_name + ", " + meetup_data.event_time + " " + meetup_data.web_link

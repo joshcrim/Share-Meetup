@@ -2,26 +2,36 @@
 
 {% block main %}
 
-	<main class="container">
-			<div class="import-button">
-				<a href="#!" class="btn">Import Meetup Events</a>
-			</div>
+<main class="container">
 
-			<div class="">
-				{% for items in meetup_data %}
-					<div class="card">
-						<div class="card-content">
-							<span class="card-title">{{ items.group_name }}</span>
-							<img class="right" src="{{items.thumb_link}}" alt="">
-							<p>{{ items.event_name }}<br><br><a href="{{ items.web_link }}">Event Details</a></p>
-						</div>
-						<div class="card-action">
-							<a href="{% url 'share' items.event_id %}"><span class="twitter-post">Post To Twitter</span></a>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-	</main>
+<!-- Create account navigation buttons to logout, log in to Facebook and Twitter, and Sync Meetup Data -->
+  <div class="social-buttons">
+	<a class="btn" href="#!">Import Meetup Events</a>
+	<a class="btn" href="{% url 'logout_view' %}">Logout</a>
+	<a class="btn" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Facebook</a>
+	<a class="btn" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Twitter</a>
+  </div>
+
+<!-- Create a card for each Meetup the user has RSVP'd to that displays the Meetup Group Name, the Event Name, a link to the event, and an option to post the event to Twitter -->
+  <div class="">
+	{% for items in meetup_data %}
+	  <div class="card">
+		<div class="card-content">
+		  <span class="card-title"> {{ items.group_name }} </span>
+		  <img class="right" src="{{items.thumb_link}}" alt="">
+		  <p>{{ items.event_name }}<br><br>
+		    <a href="{{ items.web_link }}">Event Details</a>
+		  </p>
+		</div>
+		<div class="card-action">
+		  <a class="twitter-post" href="{%url 'share' items.event_id %}">
+			<span >Post To Twitter</span>
+		  </a>
+		</div>
+	  </div>
+	{% endfor %}
+   </div>
+</main>
 
 {% endblock %}
 
