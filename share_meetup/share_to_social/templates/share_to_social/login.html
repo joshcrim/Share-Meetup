@@ -11,7 +11,7 @@
 
 <!-- Creates a form for User Login that submits a POST request back to this page which,
 upon successful login, redirects the POST data to the user's homepage(/home/%username%/) -->
-	<form class="login" action='/accounts/login/' method="post">
+	<form class="login" action='{{request.path}}' method="post">
 	  <div class="input-field">
 		<input name='username' type='text' class='validate'>
 	    <label for="username">Username</label>

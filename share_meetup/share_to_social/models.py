@@ -19,6 +19,7 @@ class Meetup_Event(models.Model):
 	web_link = models.CharField(max_length=200)
 	event_time = models.CharField(max_length=200)
 	photo_link = models.CharField(max_length=200)
+#	meetup_post = models.CharField(max_length=140)
 
 
 

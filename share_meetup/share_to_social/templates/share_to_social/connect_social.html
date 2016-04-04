@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block main %}
+
+  <div class="container center social-buttons">
+	<a class="btn" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Facebook</a>
+	<a class="btn" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Twitter</a>
+	<a class="btn" href="{% url 'social:begin' 'meetup' %}?next={{ request.path }}">Meetup</a>
+	<a class="btn" href="{% url 'home' %}">Finish</a>
+  </div>
+
+{% endblock %}

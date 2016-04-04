@@ -2,7 +2,7 @@
   <head>
 	<title>Share Meetup</title>
 	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+	<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
 	<link rel="stylesheet" href= "{% static  'css/style.css' %}">
   </head>
   <body>
@@ -11,16 +11,18 @@
 	  <div class="nav-wrapper teal">
 		<a href="{% url 'index' %}" class="brand-logo center" >Share Meetups</a>
 		<ul class="right hide-on-med-and-down">
-		  <li><a href="{% url 'login' %}">Log In</a></li>
-	      <li><a href="{% url 'create_account' %}">Create Account</a></li>
-	      <li><a href="{% url 'index' %}">Home</a></li>
+		  {% if user.is_authenticated %}
+			<li><a href="{% url 'logout' %}">Logout</a></li>
+		  {% else %}
+			<li><a href="{% url 'login' %}">Log In</a></li>
+		  {% endif %}
       	</ul>
 	  </div>
 	</nav>
 
-	  {% block main %}{% endblock %}
+	{% block main %}{% endblock %}
 
-	  <script src="{% static 'js/jquery-2.2.2.js' %}" ></script>
-	  <script src="{% static 'js/materialize.min.js' %}" ></script>
+	<script src="{% static 'js/jquery-2.2.2.js' %}" ></script>
+	<script src="{% static 'js/materialize.min.js' %}" ></script>
   </body>
 </html>

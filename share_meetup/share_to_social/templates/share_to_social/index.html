@@ -1,14 +1,11 @@
 {% extends 'base.html' %}
-
 {% block main %}
 
-<div class="container">
+  <div class="container">
 	<div class="center account-buttons">
-
-		<a class="waves-effect waves-light btn" href="{% url 'login' %}">Log In</a>
-		<a class="waves-effect waves-light btn" href="{% url 'create_account' %}">Create Account</a>
-		
+	  <p>Share-Meetup will monitor your Meetup.com account, automatically post any new meetups you RSVP to, and allow you to manually share meetups you have already RSVP'd to in the past.</p>
+	  <a class="waves-effect waves-light btn" href="{% url 'create_account' %}"> Click Here To Create An Account!</a>
 	</div>
-</div>
+  </div>
 
 {% endblock %}

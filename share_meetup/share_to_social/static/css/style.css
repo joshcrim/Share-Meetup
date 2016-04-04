@@ -4,7 +4,9 @@ body { background-color: #e57373 !important; }
 
 .account-buttons { padding-top: 4%; }
 
-.twitter-post { color: #e67373; }
+.account-buttons p { color: white; }
+
+.twitter-post { color: #e67373 !important; }
 
 .input-field input,
 .input-field label,
