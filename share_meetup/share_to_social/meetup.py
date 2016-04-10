@@ -9,13 +9,16 @@ def get_meetup_events(user):
 	refresh_url = settings.SOCIAL_MEETUP_REFRESH_URL
 	access_url = settings.SOCIAL_MEETUP_API_URL
 	user = User.objects.get(username=user)
+
 	social_auth = user.social_auth.get(provider='meetup')
 
 	refresh_request = requests.post(refresh_url + social_auth.extra_data['refresh_token'])
 	refresh_request = json.loads(refresh_request.text)
 
 	social_auth.extra_data['access_token'] = refresh_request['access_token']
+
 	social_auth.extra_data['refresh_token'] = refresh_request['refresh_token']
+
 	social_auth.save
 
 	events = requests.get(access_url + social_auth.extra_data['access_token'])

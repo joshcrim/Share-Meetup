@@ -1,23 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+
 from .meetup import get_meetup_events
 from .models import Meetup_Event
-
-
 
 # Create your views here.
 @csrf_exempt
 def index(request):
-    return render(request, 'index.html')
+    if request.user.is_active:
+        return redirect('/home/')
+    else:
+        return render(request, 'index.html')
 
 @csrf_exempt
 @login_required(login_url='/accounts/login/')
 def home(request):
 #   GET Meetup Event Info from all meetups the user
 #   has RSVP'd to and load JSON data into variable
-
     user = request.user.username
+
 #   Get user's meetup events from Meetup.com, parse from json to text, store in database, load to variable.
     meetup_data = get_meetup_events(user)
 

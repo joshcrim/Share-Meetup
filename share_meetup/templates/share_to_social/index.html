@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block main %}
+
+  <div class="container center">
+
+	  <div class="form-container z-depth-3">
+
+<!-- Creates a form for User Login that submits a POST request back to this page which,
+upon successful login, redirects the POST data to the user's homepage(/home/%username%/) -->
+	<a class="btn" href="{% url 'social:begin' 'meetup' %}?next={{ request.path }}">Meetup</a>
+		<form class="login" action='/accounts/login/' method="post">
+		  <div class="input-field">
+			<input name='username' type='text' class='validate'>
+		    <label for="username">Username</label>
+	      </div>
+	      <div class="input-field">
+			<input name='password' type='password' class='validate'>
+		    <label for="password">Password</label>
+	      </div>
+	        <input class="btn left" type="submit" value="Login">
+		</form>
+
+	  </div>
+
+	    <br>
+		<a class="waves-effect waves-light btn" href="{% url 'create_account' %}"> Click Here To Create An Account!</a>
+
+
+  </div>
+
+{% endblock %}

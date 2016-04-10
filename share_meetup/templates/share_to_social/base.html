@@ -4,6 +4,7 @@
 	{% load staticfiles %}
 	<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
 	<link rel="stylesheet" href= "{% static  'css/style.css' %}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
 
@@ -13,8 +14,6 @@
 		<ul class="right hide-on-med-and-down">
 		  {% if user.is_authenticated %}
 			<li><a href="{% url 'logout' %}">Logout</a></li>
-		  {% else %}
-			<li><a href="{% url 'login' %}">Log In</a></li>
 		  {% endif %}
       	</ul>
 	  </div>

@@ -2,10 +2,6 @@ body { background-color: #e57373 !important; }
 
 .social-buttons { padding-top: 1%; }
 
-.account-buttons { padding-top: 4%; }
-
-.account-buttons p { color: white; }
-
 .twitter-post { color: #e67373 !important; }
 
 .input-field input,
@@ -15,7 +11,7 @@ body { background-color: #e57373 !important; }
 
 .form-container {
   margin-top: 3%;
-  padding: 3%;
-  padding-bottom: 5%;
+  margin-bottom: 1%;
+  padding: 1% 3% 5% 3%;
   background-color: #669688;
 }

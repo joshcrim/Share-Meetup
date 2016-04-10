@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
+
 from .forms import UserForm
 
 @csrf_exempt
@@ -17,7 +18,7 @@ def create_account(request):
             userform = User.objects.create_user(**userform.cleaned_data)
             userform.save()
             # redirect to a new URL:
-            return redirect('/accounts/create_account/connect_social/')
+            return redirect('/index/')
 
         # if a GET (or any other method) we'll create a blank form
     else:
@@ -34,7 +35,7 @@ def user_login(request):
             login(request, user)
             return redirect('/home/')
     else:
-        return render(request, 'login.html')
+        return render(request, 'index.html')
 
 @csrf_exempt
 def logout_view(request):
