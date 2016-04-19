@@ -20,7 +20,7 @@ def create_account(request):
             # redirect to a new URL:
             return redirect('/index/')
 
-        # if a GET (or any other method) we'll create a blank form
+    # if a GET (or any other method) we'll create a blank form
     else:
         userform = UserForm()
         return render(request, 'create_account.html', {'userform': userform})
@@ -34,13 +34,15 @@ def user_login(request):
         if user is not None:
             login(request, user)
             return redirect('/home/')
+        else:
+            return redirect('/index/')
     else:
         return render(request, 'index.html')
 
 @csrf_exempt
 def logout_view(request):
     logout(request)
-    return render(request, 'index.html')
+    return redirect('/index/')
 
 @csrf_exempt
 def connect_social(request):

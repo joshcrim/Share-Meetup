@@ -10,8 +10,19 @@ body { background-color: #e57373 !important; }
 .input-field input[type=password]:focus + label { color: white; }
 
 .form-container {
-  margin-top: 3%;
-  margin-bottom: 1%;
-  padding: 1% 3% 5% 3%;
+  margin-top: 3% !important;
+  margin-bottom: 1% !important;
+  padding: 0% 3% 2% 3% !important;
   background-color: #669688;
+}
+
+.sidenav { height: 100%;
+position: absolute;}
+
+.navigation {
+	position: fixed;
+}
+
+.cards {
+	position: relative;
 }
