@@ -1,29 +1,63 @@
 {% extends 'base.html' %}
 {% block main %}
+<div class="container">
 
-  <div class="container">
-	<div class="row">
-<!-- Creates a form for User Login that submits a POST request back to this page which,
-upon successful login, redirects the POST data to the user's homepage(/home/%username%/) -->
-	  <div class="form-container col s8 m8 l6 offset-m2 offset-l3">
-	    <form class="login" action='/accounts/login/' method="post">
-	      <p>Login</p>
-		  <div class="input-field">
-			<input name='username' type='text' class='validate'>
-			<label for="username">Username</label>
-		  </div>
-		  <div class="input-field">
-			<input name='password' type='password' class='validate'>
-			<label for="password">Password</label>
-		  </div>
-			<input class="btn left" type="submit" value="Login">
-		</form>
-	  </div>
-	</div>
+		<main>
+			<div class="row">
 
-	<div class="row center">
-	  <a class="waves-effect waves-light btn" href="{% url 'create_account' %}"> Click Here To Create An Account!</a>
+				<h1 class="col s12 m6 l6 center">Welcome</h1>
+
+				<div class="user-selection col s12 m6 l6">
+					<div class="row">
+						<a class="btn col s12 m12 l12 modal-trigger" href="#modal-login">Login</a>
+					</div>
+					<div class="row">
+						<a class="btn col s12 m12 l12 modal-trigger" href="#modal-create">Create Account</a>
+					</div>
+					<div class="row">
+						<a class="btn col s12 m12 l12 modal-trigger" href="#modal-test">Use A Test Account</a>
+					</div>
+				</div>
+
+		<!--Login Modal-->
+				<div id="modal-login" class="modal form-container">
+					<form class="login" action='/accounts/login/' method="post">
+						<div class="input-field">
+							<input name='username' type='text' class='validate'>
+							<label for="username">Username</label>
+						</div>
+						<div class="input-field">
+							<input name='password' type='password' class='validate'>
+							<label for="password">Password</label>
+						</div>
+						<input class="btn left" type="submit" value="Login">
+					</form>
+				</div>
+
+		<!--Create Account Modal-->
+				<div id="modal-create" class="modal form-container col m8 l6 offset-m2 offset-l3">
+				  <form class="create_account col-3" action="/accounts/create_account/" method="post">
+				    {% for field in userform %}
+						  <div class="input-field">
+								{{ field }}
+								{{ field.label_tag|cut:":" }}
+					    </div>
+				    {% endfor %}
+						<input class="btn left" type="submit" value="Submit" />
+				  </form>
+				</div>
+
+		<!--Test Account Modal-->
+				<div id="modal-test" class="modal form-container">
+					<div class="input-field">
+						<input name='username' type='text' class='validate'>
+						<label for="username">Username</label>
+					</div>
+				</div>
+
+			</div>
+		</main>
+
 	</div>
-  </div>
 
 {% endblock %}

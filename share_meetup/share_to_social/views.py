@@ -2,15 +2,19 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
+from .forms import UserForm
 from .meetup import get_meetup_events
 from .models import Meetup_Event
+
 
 @csrf_exempt
 def index(request):
     if request.user.is_active:
         return redirect('/home/')
     else:
-        return render(request, 'index.html')
+        userform = UserForm()
+        return render(request, 'index.html', {'userform': userform})
+
 
 @csrf_exempt
 @login_required(login_url='/accounts/login/')
@@ -26,7 +30,13 @@ def home(request):
         return render(request, 'connect_social.html')
 
 
-#! Currently unused !#
+@csrf_exempt
+def test(request):
+    userform = UserForm()
+    return render(request, 'test.html', {'userform': userform})
+
+
+#! !# Currently unused
 def share(request, event_id):
     meetup_content = Meetup_Event.objects.all().filter(event_id=event_id)
 

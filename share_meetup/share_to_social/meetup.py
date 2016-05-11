@@ -5,6 +5,7 @@ import requests
 import json
 import datetime
 
+
 def get_meetup_events(user):
 	refresh_url = settings.SOCIAL_MEETUP_REFRESH_URL
 	access_url = settings.SOCIAL_MEETUP_API_URL

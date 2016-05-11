@@ -5,6 +5,22 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .forms import UserForm
 
+
+@csrf_exempt
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/home/')
+        else:
+            return redirect('/index/')
+    else:
+        return render(request, 'index.html')
+
+
 @csrf_exempt
 def create_account(request):
     # if this is a POST request we need to process the form data
@@ -25,24 +41,12 @@ def create_account(request):
         userform = UserForm()
         return render(request, 'create_account.html', {'userform': userform})
 
-@csrf_exempt
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('/home/')
-        else:
-            return redirect('/index/')
-    else:
-        return render(request, 'index.html')
 
 @csrf_exempt
 def logout_view(request):
     logout(request)
     return redirect('/index/')
+
 
 @csrf_exempt
 def connect_social(request):

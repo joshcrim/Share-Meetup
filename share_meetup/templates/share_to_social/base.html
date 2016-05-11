@@ -8,20 +8,21 @@
   </head>
   <body>
 
-	<nav class="z-depth-0 navigation">
+	<nav class="navigation">
 	  <div class="nav-wrapper teal">
-		<a href="{% url 'index' %}" class="brand-logo center" >Share Meetups</a>
-		<ul class="right hide-on-med-and-down">
-		  {% if user.is_authenticated %}
-			<li><a href="{% url 'logout' %}">Logout</a></li>
-		  {% endif %}
-      	</ul>
+			<a href="{% url 'index' %}" class="brand-logo center" >Share Meetups</a>
+				<ul class="right hide-on-med-and-down">
+			  {% if user.is_authenticated %}
+					<li><a href="{% url 'logout' %}">Logout</a></li>
+			  {% endif %}
+	      </ul>
 	  </div>
 	</nav>
 
 	{% block main %}{% endblock %}
 
-	<script src="{% static 'js/jquery-2.2.2.js' %}" ></script>
+	<script src="{% static 'js/jquery.js' %}" ></script>
 	<script src="{% static 'js/materialize.min.js' %}" ></script>
+	<script src="{% static 'js/js.js' %}" ></script>
   </body>
 </html>
