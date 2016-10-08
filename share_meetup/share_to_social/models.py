@@ -2,8 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.contrib import admin
 
-# Create your models here.
-
 
 class Meetup_Event(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -15,7 +13,7 @@ class Meetup_Event(models.Model):
 	photo_link = models.CharField(max_length=200)
 # meetup_post = models.CharField(max_length=140)
 
-	def __unicode__(self):
+	def __str__(self):
 		return self.event_name
 
 
